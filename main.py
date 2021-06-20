@@ -1,31 +1,28 @@
-from turtle import Turtle, Screen
 import random
+import turtle as t
 
-turtle = Turtle()
-colors = ["red", "orange", "blue", "green", "purple", "coral", "goldenrod", "lime", "black", "crimson"]
-turtle_width = 10
-turtle.width(turtle_width)
-random_walk = False
-step_count = 0
+t.colormode(255)
+turtle = t.Turtle()
+turtle.penup()
+turtle.hideturtle()
 
+rgb_color_list = [(1, 12, 31), (54, 25, 17), (218, 127, 106), (9, 104, 160), (242, 213, 68), (150, 83, 39),
+                  (216, 86, 63), (156, 6, 24), (165, 162, 30), (158, 62, 102), (207, 73, 103), (10, 64, 33),
+                  (11, 96, 57), (95, 6, 20), (175, 134, 162), (7, 173, 217)]
 
-# random walk
-def turtle_random_walk():
-    turtle.color(random.choice(colors))
-    random_number = [1, 2]
-    if random.choice(random_number) == 1:
-        turtle.lt(90)
-    else:
-        turtle.rt(90)
+turtle.setheading(225)
+turtle.forward(250)
+turtle.setheading(0)
+for _ in range(10):
+    for _ in range(10):
+        turtle.dot(20, random.choice(rgb_color_list))
+        turtle.forward(50)
+
+    turtle.setheading(90)
     turtle.forward(50)
+    turtle.setheading(180)
+    turtle.forward(500)
+    turtle.setheading(360)
 
-
-while not random_walk:
-    if step_count >= 100:
-        random_walk = True
-    else:
-        turtle_random_walk()
-
-
-screen = Screen()
+screen = t.Screen()
 screen.exitonclick()
